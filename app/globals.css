@@ -1,0 +1,111 @@
+@import "tailwindcss";
+/* Neon Auth UI; our @theme below overrides its tokens, so it renders in our palette */
+@import "@neondatabase/auth/ui/tailwind";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
+  --font-script: var(--font-kaushan);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Light theme for shared controls and surfaces */
+:root {
+  --radius: 0.75rem;
+  --background: #f2f1eb;
+  --foreground: #23251e;
+  --card: #fcfbf6;
+  --card-foreground: #23251e;
+  --popover: #fcfbf6;
+  --popover-foreground: #23251e;
+  --primary: #a53e12;
+  --primary-foreground: #fff9f2;
+  --secondary: #e6e6dc;
+  --secondary-foreground: #23251e;
+  --muted: #e8e7de;
+  --muted-foreground: #5f6256;
+  --accent: #f2e2d5;
+  --accent-foreground: #8f350f;
+  --destructive: #a92421;
+  --border: #cccdc1;
+  --input: #a6a99a;
+  --ring: #a53e12;
+}
+
+/* Dark theme for shared controls and surfaces */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #121310;
+  --foreground: #f4f2ea;
+  --card: #1b1c18;
+  --card-foreground: #f4f2ea;
+  --popover: #1b1c18;
+  --popover-foreground: #f4f2ea;
+  --primary: #ff804c;
+  --primary-foreground: #20150e;
+  --secondary: #32342c;
+  --secondary-foreground: #f4f2ea;
+  --muted: #292a25;
+  --muted-foreground: #b8b8aa;
+  --accent: #37271d;
+  --accent-foreground: #ffa478;
+  --destructive: #ff9b91;
+  --border: #383932;
+  --input: #4e4f46;
+  --ring: #ff804c;
+}
+
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading tracking-tight;
+  }
+}

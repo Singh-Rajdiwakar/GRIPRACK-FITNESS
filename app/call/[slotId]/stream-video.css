@@ -1,0 +1,29 @@
+/* Unlayered on purpose, see app/(app)/messages/stream-chat.css; overrides follow the import */
+@import "@stream-io/video-react-sdk/dist/css/styles.css";
+
+.str-video {
+  /* The SDK theme is dark like this page; only the accent becomes ours */
+  --str-video__primary-color: var(--primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.griprack-call {
+  height: 100%;
+  background: transparent;
+}
+
+.fx-session {height:100dvh;min-height:0!important;background:#10110e!important;color:#f4f2ea!important;}
+.fx-session>header {flex:none;min-width:0;border-bottom:1px solid #373930;background:#171814;padding:12px clamp(12px,3vw,48px);}
+.fx-session-meta {min-width:0;color:#eee}
+.fx-video-stage {flex:1;min-height:0;margin:clamp(7px,1.3vw,24px);overflow:auto;background:#1a1c18;border:1px solid #383a31;border-radius:8px;}
+.fx-lobby {display:grid;grid-template-columns:minmax(0,1.65fr) minmax(220px,.75fr);align-content:center;align-items:center;gap:clamp(20px,4vw,72px);min-height:100%;max-width:1350px;margin:auto;padding:clamp(16px,4vw,70px);}
+.fx-preview {min-width:0;background:#10110f;border:1px solid #47483f;border-radius:8px;padding:12px;}
+.fx-device-check h1 {font:600 clamp(32px,4vw,63px)/1 var(--font-outfit),sans-serif;letter-spacing:-.055em;margin:13px 0;}
+.fx-device-check button {min-height:45px;border-radius:4px;}
+.fx-control-dock {display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;border-top:1px solid #393a32;padding:9px 0 0;}
+.fx-connected [role="status"] {color:#ffbc99;text-align:center;font-size:13px;}
+@media(max-width:720px){.fx-lobby{grid-template-columns:1fr;gap:16px;align-content:start;}.fx-session-meta p{font-size:11px;line-height:1.45;}.fx-control-dock {gap:4px}.fx-device-check{padding-bottom:8px;}}
+
+.fx-preview .str-video__video-preview-container {width:100%;height:auto;aspect-ratio:4/3;max-height:55dvh;border-width:1px;border-color:#595c50;background:#23251f;}
+.fx-preview .str-video__video-preview {max-width:100%}
+@media(max-width:720px){.fx-preview .str-video__video-preview-container{aspect-ratio:16/11}}

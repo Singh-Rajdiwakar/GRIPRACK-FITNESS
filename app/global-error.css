@@ -1,0 +1,21 @@
+/* The root error boundary renders its own document, outside the application shell. */
+body:has(> .gr-failure) { margin: 0; background: #121310; }
+.gr-failure {
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: clamp(20px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  background: #121310;
+  color: #f4f2ea;
+  font: 16px/1.55 system-ui, sans-serif;
+}
+.gr-failure-brand { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; color: inherit; font-weight: 800; text-decoration: none; }
+.gr-failure-brand span { width: 36px; height: 36px; background: url("/griprack-mark.svg") center / contain no-repeat; }
+.gr-failure section { width: min(100%, 60rem); margin: auto; padding-block: 48px; }
+.gr-failure h1 { margin: 0; font-size: clamp(38px, 6vw, 82px); line-height: 1.04; letter-spacing: -.055em; }
+.gr-failure p { color: #c6c7bb; }
+.gr-failure nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.gr-failure nav :is(button, a) { padding: 10px 16px; border-radius: 4px; border: 1px solid #66685c; color: inherit; font: inherit; cursor: pointer; text-decoration: none; }
+.gr-failure nav button { background: #ff804c; color: #21160e; border-color: transparent; font-weight: 650; }
+.gr-failure :focus-visible { outline: 2px solid #ffad83; outline-offset: 4px; }

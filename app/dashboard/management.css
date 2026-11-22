@@ -1,0 +1,26 @@
+.mg-workspace {min-width:0;font-variant-numeric:tabular-nums}
+.mg-workspace :is(.rounded-2xl,.rounded-xl) {border-radius:7px}
+.mg-workspace :is(input:not([type=checkbox]):not([type=hidden]),textarea) {font-size:16px}
+.mg-workspace :is(input:not([type=number]):not([type=checkbox]):not([type=hidden]),textarea) {min-height:44px;border-radius:4px;background:var(--field);border-color:var(--input)}
+.mg-workspace textarea {min-height:110px}.mg-workspace button {border-radius:5px}
+.mg-schedule {display:grid;grid-template-columns:minmax(245px,.62fr) minmax(0,1.4fr);gap:clamp(14px,2vw,28px);align-items:start}
+.mg-schedule h2,.mg-editor-panel h2 {font:600 23px/1.2 var(--font-outfit),sans-serif;letter-spacing:-.04em}
+.mg-schedule form dl {border-block:1px solid var(--border);padding:12px 0}.mg-counts>div {border-top:2px solid var(--input)}
+.mg-counts>div[data-status="Booked"] {border-top-color:var(--primary)}.mg-counts>div[data-status="Held"] {border-top-color:#b79251}
+.mg-counts p:first-child {font-size:30px;line-height:1.15}.mg-slot-row time {color:var(--accent-foreground)}
+.mg-slot-row {min-height:65px}.mg-slot-row [aria-label="Delete slot"]:hover {color:var(--destructive)}
+.mg-directory {background:var(--card);border:1px solid var(--border);border-radius:7px;overflow:hidden}
+.mg-directory th {height:46px;background:var(--side);color:var(--muted-foreground);font-size:11px;text-transform:uppercase;letter-spacing:.075em}
+.mg-directory td {padding-block:16px;white-space:normal}.mg-directory td:first-child {font-weight:650}.mg-directory td time {white-space:nowrap}
+.mg-directory [data-slot=badge] {height:auto;white-space:normal;text-align:left}.mg-directory td a {border-color:var(--input)}
+.mg-editor>.st-heading {margin-top:16px}.mg-editor-grid {display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.85fr);align-items:start;gap:clamp(16px,2vw,30px)}
+.mg-editor-grid>* {min-width:0}.mg-editor-panel {min-width:0;padding:clamp(16px,2.1vw,30px);background:var(--card);border:1px solid var(--border);border-radius:7px}
+.mg-editor-panel>h2 {padding-bottom:12px;border-bottom:1px solid var(--border)}.mg-editor-panel label {line-height:1.45}.mg-editor-panel:has([aria-label="Published"]) h2 {display:flex;justify-content:space-between;align-items:center}
+.mg-saved {font:600 11px/1.4 var(--font-inter),sans-serif;color:var(--accent-foreground);border:1px solid var(--border);padding:4px 7px;border-radius:3px}
+.mg-editor-panel:has(button[data-variant="destructive"]) {border-bottom:2px solid color-mix(in srgb,var(--destructive) 60%,var(--border))}
+.mg-lessons li {flex-wrap:wrap}.mg-lessons li>div.min-w-0 {min-width:min(140px,70%)}.mg-editor-panel [class*="border-dashed"]{border-radius:4px}
+.mg-workspace [data-slot=button]:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+@media(max-width:1200px){.mg-editor-grid{grid-template-columns:minmax(0,1.35fr) minmax(220px,.85fr)}}
+@media(max-width:810px){.mg-editor-grid,.mg-schedule{grid-template-columns:1fr}.mg-directory,.mg-directory table,.mg-directory tbody,.mg-directory tr {display:block}.mg-directory thead {position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}.mg-directory td {display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;padding:7px 16px;text-align:left}.mg-directory tr{padding-block:12px}.mg-directory td[data-label]:before {content:attr(data-label);color:var(--muted-foreground);font-size:12px;flex:none}.mg-directory td:last-child{justify-content:flex-end}.mg-directory td:first-child{font-size:17px}.mg-directory td>span{min-width:0}.mg-editor-panel input{min-width:0}}
+@media(prefers-reduced-motion:no-preference){.mg-editor-panel,.mg-counts>div,.mg-directory tbody tr,.mg-slot-row{animation:mg-arrive .32s ease-out backwards}.mg-counts>div:nth-child(2),.mg-directory tbody tr:nth-child(2){animation-delay:45ms}}
+@keyframes mg-arrive{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
