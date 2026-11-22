@@ -36,6 +36,9 @@ export function ProfileEditor({ trainer }: { trainer: TrainerSummary }) {
         <label className="grid gap-2 text-sm font-medium">Bio
           <Textarea name="bio" defaultValue={trainer.bio ?? ""} rows={4} minLength={20} maxLength={1000} required />
         </label>
+        <label className="grid gap-2 text-sm font-medium">Coaching experience (years, optional)
+          <Input type="number" name="experienceYears" min={0} step={1} defaultValue={trainer.experienceYears ?? ""} />
+        </label>
         <fieldset>
           <legend className="mb-2 text-sm font-medium">Specialties</legend>
           <div className="flex flex-wrap gap-2">{specialties.map(({ slug, label }) => (

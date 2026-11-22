@@ -15,6 +15,13 @@
       "when": 1795215400983,
       "tag": "0001_paid_checkouts",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795375915718,
+      "tag": "0002_trainer_experience",
+      "breakpoints": true
     }
   ]
 }

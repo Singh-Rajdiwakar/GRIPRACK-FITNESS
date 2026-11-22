@@ -13,6 +13,7 @@ const trainerFields = {
   avatarUrl: profiles.avatarUrl,
   headline: profiles.headline,
   bio: profiles.bio,
+  experienceYears: profiles.experienceYears,
   specialties: profiles.specialties,
   sessionPriceCents: profiles.sessionPriceCents,
   rating: sql<number>`(select coalesce(avg(${reviews.rating}), 0)::float from ${reviews} where ${reviews.trainerId} = ${profiles.userId})`,

@@ -82,6 +82,11 @@ async function Trainer({ params, searchParams }: Props) {
           <p className="mt-2 text-xl text-muted-foreground">{trainer.headline}</p>
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
             {trainer.reviewCount > 0 && <Rating value={trainer.rating} count={trainer.reviewCount} />}
+            {trainer.experienceYears != null && (
+              <span className="text-muted-foreground">
+                {trainer.experienceYears} {trainer.experienceYears === 1 ? "year" : "years"} of coaching experience
+              </span>
+            )}
             <span className="flex items-center gap-1.5 text-muted-foreground">
               <Video className="size-4" /> 1:1 video sessions
             </span>

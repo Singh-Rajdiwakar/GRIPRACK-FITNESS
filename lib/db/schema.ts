@@ -13,6 +13,7 @@ export const profiles = pgTable("profiles", {
   avatarUrl: text("avatar_url"),
   headline: text("headline"),
   bio: text("bio"),
+  experienceYears: integer("experience_years"),
   specialties: text("specialties").array(),
   sessionPriceCents: integer("session_price_cents"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

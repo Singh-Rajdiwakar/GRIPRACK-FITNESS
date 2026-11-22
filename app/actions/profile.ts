@@ -26,6 +26,10 @@ const avatarPath = z
 
 const editFields = trainerFields.extend({
   name: z.string().trim().min(1, "Enter your display name").max(120, "Keep your name under 120 characters"),
+  experienceYears: z.preprocess(
+    value => value === "" ? null : value,
+    z.coerce.number().pipe(z.int32().nonnegative("Enter zero or more years")).nullish(),
+  ),
   avatar: avatarPath,
 })
 
@@ -35,6 +39,7 @@ export async function updateTrainerProfile(profileId: string, _state: ActionResu
 
   const parsed = editFields.safeParse({
     name: form.get("name"), avatar: form.get("avatar") || undefined,
+    experienceYears: form.get("experienceYears") ?? undefined,
     headline: form.get("headline"), bio: form.get("bio"),
     specialties: form.getAll("specialties"), price: form.get("price"),
   })
