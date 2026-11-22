@@ -5,7 +5,11 @@ export default defineConfig({
   preview: {
     // Browsers on other origins stay "connecting" forever, so list every place the app runs
     realtime: {
-      allowedOrigins: ["http://localhost:3000", "https://nodejs-1683724-6753739.cloudwaysnodeapps.com"],
+      allowedOrigins: [
+        "http://localhost:3000",
+        "https://nodejs-1683724-6753739.cloudwaysnodeapps.com",
+        "https://griprack.vercel.app",
+      ],
     },
   },
   auth: true,
