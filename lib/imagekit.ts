@@ -13,6 +13,33 @@ export const uploadAuth = () => ({ ...getUploadAuthParams({ privateKey, publicKe
 // A stored file's URL, percent-encoded the same way the video player builds its URLs
 export const fileUrl = (path: string) => new URL(endpoint + path).href
 
+// ImageKit can serve the video even when its audio cannot be transcribed.
+// Probe the two optional assets independently, after the page checks lesson access.
+export async function getLessonTrackAvailability(path: string) {
+  const src = fileUrl(path)
+  async function available(asset: string) {
+    try {
+      const response = await fetch(signUrl(`${src}/${asset}`, 60), {
+        method: "HEAD",
+        cache: "no-store",
+        signal: AbortSignal.timeout(3000),
+      })
+      if (!response.ok && response.status !== 400 && response.status !== 404) {
+        console.warn(`ImageKit ${asset} availability check returned HTTP ${response.status}`)
+      }
+      return response.ok
+    } catch {
+      console.warn(`ImageKit ${asset} availability check did not complete`)
+      return false
+    }
+  }
+  const [subtitles, chapters] = await Promise.all([
+    available("ik-gensubtitle.transcript"),
+    available("ik-genchapter.vtt"),
+  ])
+  return { subtitles, chapters }
+}
+
 // ImageKit's signed-URL scheme: HMAC-SHA1 over everything after "<endpoint>/" (query included) plus the expiry.
 // Changing any part of the URL, or using it after `ik-t`, gets a 403.
 export function signUrl(url: string, expiresIn: number) {

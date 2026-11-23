@@ -13,7 +13,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { UserAvatar } from "@/components/user-avatar"
 import { canWatchLesson } from "@/lib/access"
 import { getUser } from "@/lib/auth"
-import { fileUrl } from "@/lib/imagekit"
+import { fileUrl, getLessonTrackAvailability } from "@/lib/imagekit"
 import { getProgram, getTrainer, ownsProgram } from "@/lib/queries"
 import { cn, imageUrl, money } from "@/lib/utils"
 import { LessonPlayer } from "./lesson-player"
@@ -175,6 +175,7 @@ async function Player({ program, access, searchParams }: { program: Program; acc
         <LessonPlayer
           lessonId={lesson.id}
           src={fileUrl(lesson.videoPath)}
+          tracks={await getLessonTrackAvailability(lesson.videoPath)}
           poster={program.coverUrl ? imageUrl(program.coverUrl, [{ width: 1280 }]) : undefined}
         />
       ) : open ? (

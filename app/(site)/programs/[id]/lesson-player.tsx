@@ -11,8 +11,14 @@ const imagekitId = (process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT ?? "").split("
 // `src` is the lesson's private video, `poster` the public cover.
 // Not the package's <IKVideoPlayer>: its cleanup lets Video.js delete the <video> React rendered, so StrictMode's
 // remount in dev finds a detached element. Creating the element here keeps every mount self-contained.
-export function LessonPlayer({ lessonId, src, poster }: { lessonId: string; src: string; poster?: string }) {
+export function LessonPlayer({ lessonId, src, poster, tracks }: {
+  lessonId: string
+  src: string
+  poster?: string
+  tracks: { subtitles: boolean; chapters: boolean }
+}) {
   const container = useRef<HTMLDivElement>(null)
+  const { subtitles, chapters } = tracks
 
   useEffect(() => {
     let player: ReturnType<typeof videoPlayer> | undefined
@@ -39,14 +45,18 @@ export function LessonPlayer({ lessonId, src, poster }: { lessonId: string; src:
         },
         { fill: true, controls: true, preload: "auto" },
       )
-      // AI-generated subtitles and chapters, built by ImageKit from the video itself
-      player.src({ src, poster: poster ? { src: poster } : undefined, chapters: true, textTracks: [{ autoGenerate: true }] })
+      player.src({
+        src,
+        poster: poster ? { src: poster } : undefined,
+        chapters,
+        textTracks: subtitles ? [{ autoGenerate: true }] : [],
+      })
     })
     return () => {
       clearTimeout(start)
       player?.dispose()
     }
-  }, [lessonId, src, poster])
+  }, [lessonId, src, poster, subtitles, chapters])
 
   return <div ref={container} className="size-full" />
 }
